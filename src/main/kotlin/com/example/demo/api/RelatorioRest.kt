@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/relatorio")
+@CrossOrigin(origins = ["http://localhost:3000", "https://aneel-app.vercel.app/"], maxAge = 3600)
 class RelatorioRest(
     private val service: RelatorioService
 ) {
