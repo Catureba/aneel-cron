@@ -45,6 +45,7 @@ O sistema atualiza automaticamente os dados uma vez por dia às 3h da manhã.
 ```
 ./mvnw spring-boot:run
 ```
+4. Acesse o front-end em `https://aneel-app.vercel.app/`
 
 ## Autor
 
