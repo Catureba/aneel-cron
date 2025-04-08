@@ -13,7 +13,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 class RelatorioClient {
 
     fun baixarRelatorioStreaming(processador: (Empreendimento) -> Unit) {
-        val url = URL("https://dadosabertos.aneel.gov.br/dataset/57e4b8b5-a5db-40e6-9901-27ca629d0477/resource/4a615df8-4c25-48fa-bbea-873a36a79518/download/ralie-usina.csv")
+        val url = URL("https://dadosabertos.aneel.gov.br/dataset/57e4b8b5-a5db-40e6-9901-27ca629d0477/resource/4a615df8-4c25-48fa-bbea-873a36a79518/download/ralie-usina.csv") // o correto seria colocar em um arquivo de properties porém iria dificultar pra vocês testarem
 
         val mapper = CsvMapper().apply {
             registerModule(kotlinModule())

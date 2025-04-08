@@ -4,9 +4,9 @@ import com.example.demo.repository.client.RelatorioClient
 import com.example.demo.repository.dao.EmpreendimentosDao
 import com.example.demo.repository.client.Empreendimento
 import org.springframework.stereotype.Component
-import java.time.LocalDate
 import java.time.LocalDateTime
 import org.slf4j.LoggerFactory
+import org.springframework.data.domain.PageRequest
 
 @Component
 class RelatorioRepository(
@@ -38,13 +38,9 @@ class RelatorioRepository(
         }
     }
 
-
-    fun buscarTop5GeradoresHoje(): List<Empreendimento> {
-        val hoje = LocalDate.now()
-        return dao.findTop5ByCreatedAtBetweenOrderByMdaPotenciaOutorgadaKwDesc(
-            hoje.atStartOfDay(),
-            hoje.plusDays(1).atStartOfDay()
-        )
+    fun buscarMaioresGeradores(page : Int, size : Int): List<Empreendimento> {
+        val pageable = PageRequest.of(page, size)
+        return dao.findAllByOrderByMdaPotenciaOutorgadaKwDesc(pageable)
     }
 
     fun limparBanco() {

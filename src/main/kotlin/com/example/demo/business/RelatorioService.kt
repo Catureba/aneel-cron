@@ -30,10 +30,10 @@ class RelatorioService(
         }
     }
 
-    fun buscarTop5GeradoresHoje(): List<Empreendimento> {
+    fun buscarMaioresGeradores(page : Int, size : Int): List<Empreendimento> {
         try {
             log.info("[RELATORIO-SERVICE] -> Listagem de empreendimentos")
-            val top5Geradores: List<Empreendimento> = repository.buscarTop5GeradoresHoje()
+            val top5Geradores: List<Empreendimento> = repository.buscarMaioresGeradores(page, size)
             return top5Geradores;
         } catch (e: Exception) {
             log.error("[RELATORIO-SERVICE] -> Erro ao realizar listagem de empreendimentos {} {}",e.message, e)

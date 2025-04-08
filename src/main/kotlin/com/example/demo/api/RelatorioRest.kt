@@ -24,8 +24,12 @@ class RelatorioRest(
         return ResponseEntity.ok("Banco de dados limpo com sucesso!")
     }
 
-    @GetMapping("/top5")
-    fun buscarTop5Geradores(): ResponseEntity<List<Empreendimento>> {
-        return ResponseEntity.ok(service.buscarTop5GeradoresHoje())
+    @GetMapping("/maiores-geradores")
+    fun buscarMaioresGeradores(
+        @RequestParam(defaultValue = "0") page: Int,
+        @RequestParam(defaultValue = "5") size: Int
+    ): ResponseEntity<List<Empreendimento>> {
+        return ResponseEntity.ok(service.buscarMaioresGeradores(page, size))
     }
+
 }

@@ -14,7 +14,7 @@ Este projeto é uma aplicação Spring Boot 3.4 com Kotlin e Maven que consome u
 ## Endpoints
 
 - `POST /relatorio/atualizar` — Atualiza os dados manualmente
-- `GET /relatorio/top5` — Retorna os 5 maiores geradores do dia
+- `GET /relatorio/maiores-geradores` — Retorna os 5 maiores geradores do dia (tem paginação)
 - `DELETE /relatorio/limpar` — Limpa todos os dados do banco
 
 ## Swagger

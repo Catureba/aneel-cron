@@ -1,6 +1,7 @@
 package com.example.demo.repository.client
 
 import com.example.demo.utils.BigDecimalBRDeserializer
+import com.fasterxml.jackson.annotation.JsonAlias
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
@@ -15,9 +16,9 @@ import jakarta.persistence.*
 data class Empreendimento(
 
     @Id
-    @JsonProperty("IdeNucleoCEG")
-    @Column(length = 255)
-    var ideNucleoCEG: Long,
+    @Column(nullable = false)
+    @JsonAlias("IdeNucleoCEG")
+    var id: Long,
 
     @Column(name = "created_at", updatable = false)
     val createdAt: LocalDateTime = LocalDateTime.now(),
