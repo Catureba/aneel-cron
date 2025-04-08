@@ -6,13 +6,14 @@ import com.example.demo.repository.client.Empreendimento
 import org.springframework.stereotype.Component
 import java.time.LocalDate
 import java.time.LocalDateTime
+import org.slf4j.LoggerFactory
 
 @Component
 class RelatorioRepository(
     private val client: RelatorioClient,
     private val dao: EmpreendimentosDao
 ) {
-
+    private val log = LoggerFactory.getLogger(this::class.java)
     fun atualizarRelatorio() {
         val lote = mutableListOf<Empreendimento>()
         val tamanhoLote = 100
@@ -22,8 +23,13 @@ class RelatorioRepository(
             lote.add(emp.copy(createdAt = agora))
 
             if (lote.size >= tamanhoLote) {
-                dao.saveAll(lote)
-                lote.clear()
+                try {
+                    log.info("[RELATORIO-REPOSITORY] -> Salvando lote")
+                    dao.saveAll(lote)
+                    lote.clear()
+                } catch (e: Exception) {
+                    log.error("[RELATORIO-REPOSITORY] -> Erro ao atualizar relatório {}", e.message)
+                }
             }
         }
 

@@ -15,8 +15,9 @@ import jakarta.persistence.*
 data class Empreendimento(
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
+    @JsonProperty("IdeNucleoCEG")
+    @Column(length = 255)
+    var ideNucleoCEG: Long,
 
     @Column(name = "created_at", updatable = false)
     val createdAt: LocalDateTime = LocalDateTime.now(),
@@ -26,10 +27,6 @@ data class Empreendimento(
 
     @JsonProperty("DatRalie")
     val datRalie: LocalDate,
-
-    @JsonProperty("IdeNucleoCEG")
-    @Column(length = 255)
-    var ideNucleoCEG: String,
 
     @JsonProperty("CodCEG")
     @Column(length = 255)
@@ -93,7 +90,6 @@ data class Empreendimento(
     fun truncateFields() {
         fun truncate(str: String, max: Int = 255): String = str.take(max)
 
-        ideNucleoCEG = truncate(ideNucleoCEG)
         codCEG = truncate(codCEG)
         sigUFPrincipal = truncate(sigUFPrincipal)
         dscOrigemCombustivel = truncate(dscOrigemCombustivel)

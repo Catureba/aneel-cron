@@ -5,7 +5,6 @@ import com.example.demo.repository.client.Empreendimento
 import org.springframework.stereotype.Service
 import org.slf4j.LoggerFactory
 
-
 @Service
 class RelatorioService(
     private val repository: RelatorioRepository,
